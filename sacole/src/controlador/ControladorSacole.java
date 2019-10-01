@@ -35,6 +35,10 @@ public class ControladorSacole {
         boolean resultado = DaoSacole.inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -52,6 +56,10 @@ public class ControladorSacole {
         boolean resultado = DaoSacole.alterar(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -64,6 +72,10 @@ public class ControladorSacole {
         boolean resultado = DaoSacole.excluir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -85,7 +97,7 @@ public class ControladorSacole {
             linha.add(objeto.getCodigo());
             linha.add(objeto.getNr_serie());
             linha.add(objeto.getPreco());
-            linha.add(objeto.getData_validade());
+            linha.add(objeto.getData_validade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             linha.add(objeto.getSabor());
             
             modelo.addRow(linha); //adicionando a linha na tabela
@@ -99,7 +111,7 @@ public class ControladorSacole {
         man.jtfCodigo.setText(objeto.getCodigo().toString());
         man.jtfNr_serie.setText(objeto.getNr_serie().toString());
         man.jtfPreco.setText(objeto.getPreco().toString());
-        man.jtfData_validade.setText(objeto.getData_validade().toString());
+        man.jtfData_validade.setText(objeto.getData_validade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         man.jtfSabor.setText(objeto.getSabor());
         
         man.jtfCodigo.setEnabled(false); //desabilitando o campo código

@@ -44,6 +44,7 @@ public class DaoSacole {
         boolean resultado = inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+            
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -92,7 +93,7 @@ public class DaoSacole {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNr_serie(rs.getInt("nr_serie"));
                 objeto.setPreco(rs.getDouble("preco"));
-                objeto.setdata_validade(rs.getLocalDate("data_validade"));
+                objeto.setData_validade(rs.getDate("data_validade").toLocalDate());
                 objeto.setSabor(rs.getString("sabor"));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
@@ -118,7 +119,8 @@ public class DaoSacole {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setNr_serie(rs.getInt("nr_serie"));
                 objeto.setPreco(rs.getDouble("preco"));
-                objeto.setData_validade(rs.getLocalDate("data_validade"));
+                objeto.setData_validade(rs.getDate("data_validade").toLocalDate());
+
                 objeto.setSabor(rs.getString("sabor"));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
